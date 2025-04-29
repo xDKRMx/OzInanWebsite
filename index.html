@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öz İnan İnşaat - 1995'ten Beri Kaliteli Yapılar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1>ÖZ İNAN</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="#projects">Projelerimiz</a></li>
+                <li><a href="#about">Hakkımızda</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section with Video Background -->
+        <section id="home" class="hero">
+            <div class="video-container">
+                <video autoplay muted loop id="hero-video">
+                    <source src="assets/hero-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="overlay"></div>
+            </div>
+            <div class="hero-content">
+                <h1>ANKARA'NIN MERKEZİNDE<br>BAMBAŞKA BİR HAYAT</h1>
+                <p>1995'ten bu yana kaliteli ve güvenilir yapılar</p>
+                <div class="motto-container">
+                    <h3>ÖZ İNAN İNŞAAT MOTTOSU</h3>
+                    <p class="motto">"Keçiören'e ve Ankara'ya daha fazla değer katmak için, depreme dayanıklı kentsel dönüşümle insanlara ferah, güvenilir, kullanışlı ve modern yapılar inşa ediyoruz."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <h2>PROJELERİMİZ</h2>
+            <div class="filter-button" id="filterToggle">
+                <span>FİLTRELE</span>
+                <i class="fas fa-plus"></i>
+            </div>
+            
+            <!-- Filter Panel -->
+            <div class="filter-panel" id="filterPanel">
+                <h3>Projeleri Filtrele</h3>
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <h4>Konum</h4>
+                        <label><input type="checkbox" value="kecioren"> Keçiören</label>
+                        <label><input type="checkbox" value="cankaya"> Çankaya</label>
+                        <label><input type="checkbox" value="etimesgut"> Etimesgut</label>
+                        <label><input type="checkbox" value="yenimahalle"> Yenimahalle</label>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Proje Tipi</h4>
+                        <label><input type="checkbox" value="konut"> Konut</label>
+                        <label><input type="checkbox" value="ticari"> Ticari</label>
+                        <label><input type="checkbox" value="karma"> Karma</label>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Teslim Durumu</h4>
+                        <label><input type="checkbox" value="tamamlandi"> Tamamlandı</label>
+                        <label><input type="checkbox" value="insaatdevam"> İnşaat Devam Ediyor</label>
+                        <label><input type="checkbox" value="planlama"> Planlama Aşamasında</label>
+                    </div>
+                </div>
+                <div class="filter-actions">
+                    <button id="applyFilter">Uygula</button>
+                    <button id="resetFilter">Sıfırla</button>
+                </div>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card" data-location="cankaya" data-type="konut" data-status="tamamlandi">
+                    <div class="project-image">
+                        <img src="assets/Image1.png" alt="Sinpaş Boulevard Çankaya">
+                        <div class="project-overlay">
+                            <h3>Sinpaş Boulevard Çankaya</h3>
+                            <div class="project-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>SİZE YAKIŞAN BİR YAŞAM</h3>
+                        <button class="delivery-btn">Hemen Teslim</button>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card" data-location="kecioren" data-type="konut" data-status="insaatdevam">
+                    <div class="project-image">
+                        <img src="assets/Image2.png" alt="Sinpaş Apartments Ümraniye">
+                        <div class="project-overlay">
+                            <h3>Sinpaş Apartments Ümraniye</h3>
+                            <div class="project-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>BUTİK BİR YAŞAM</h3>
+                        <button class="view-btn">Yapı Proje</button>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card" data-location="cankaya" data-type="karma" data-status="tamamlandi">
+                    <div class="project-image">
+                        <img src="assets/Image3.png" alt="Ankara'nın Merkezinde">
+                        <div class="project-overlay">
+                            <h3>Ankara'nın Merkezinde</h3>
+                            <div class="project-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>BAMBAŞKA BİR HAYAT</h3>
+                        <button class="delivery-btn">Hemen Teslim</button>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card" data-location="etimesgut" data-type="konut" data-status="planlama">
+                    <div class="project-image">
+                        <img src="assets/project4.jpg" alt="Tabiat Villaları">
+                        <div class="project-overlay">
+                            <h3>Tabiat Villaları</h3>
+                            <div class="project-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>DOĞAYLA YAŞAMAK TABIATIMIZDA VAR</h3>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card" data-location="yenimahalle" data-type="ticari" data-status="insaatdevam">
+                    <div class="project-image">
+                        <img src="assets/project5.jpg" alt="Premium Yaşam">
+                        <div class="project-overlay">
+                            <h3>Premium Yaşam</h3>
+                            <div class="project-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>GÜVEN DOLU PREMIUM BİR HAYAT</h3>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card" data-location="kecioren" data-type="konut" data-status="tamamlandi">
+                    <div class="project-image">
+                        <img src="assets/project6.jpg" alt="Doğal Yaşam">
+                        <div class="project-overlay">
+                            <h3>Doğal Yaşam</h3>
+                            <div class="project-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>HER NEFESTE DOĞAL BİR YAŞAM</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="about-content">
+                <h2>ÖZ İNAN KİMDİR?</h2>
+                <div class="about-flex">
+                    <div class="about-text">
+                        <p>Öz İnan İnşaat, 1995 yılından bu yana Ankara'da inşaat projeleri geliştirmektedir. Keçiören'de kentsel dönüşümün öncü firmalarından biri olarak, depreme dayanıklı, ferah, güvenilir, kullanışlı ve modern yapılar inşa etmeye çalışıyoruz.</p>
+                        <p>Keçiören'e ve Ankara'ya daha fazla değer katmak için çalışan firmamız, bugüne kadar 50'ye yakın projeye imza atmıştır. Müşteri memnuniyeti ve kaliteli yapılar, firmamızın temel değerleridir.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="assets/about-image.jpg" alt="Öz İnan İnşaat">
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <span class="stat-number">28</span>
+                        <span class="stat-text">Yıllık Deneyim</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-text">Tamamlanan Proje</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">1000+</span>
+                        <span class="stat-text">Mutlu Aile</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Details Slide Panel -->
+        <div class="project-details-panel" id="projectDetailsPanel">
+            <div class="panel-close">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="project-details-content">
+                <div class="project-details-header">
+                    <h2 id="projectTitle">Proje Adı</h2>
+                </div>
+                <div class="project-details-body">
+                    <div class="project-images">
+                        <img id="projectMainImage" src="" alt="Proje Görseli">
+                        <div class="project-thumbnails">
+                            <img src="" alt="Thumbnail 1" class="thumbnail">
+                            <img src="" alt="Thumbnail 2" class="thumbnail">
+                            <img src="" alt="Thumbnail 3" class="thumbnail">
+                        </div>
+                    </div>
+                    <div class="project-info-table">
+                        <div class="info-row">
+                            <div class="info-label">Proje Adı:</div>
+                            <div class="info-value" id="detailProjectName">Sinpaş Apartments Ümraniye</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Proje Lokasyonu:</div>
+                            <div class="info-value" id="detailLocation">Ağaçlı Bozkurt / Ümraniye / İstanbul</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Daire Tipleri:</div>
+                            <div class="info-value" id="detailTypes">2+1 / 3+1</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Daire Sayısı:</div>
+                            <div class="info-value" id="detailUnitCount">48 Konut</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Blok Sayısı:</div>
+                            <div class="info-value" id="detailBlockCount">3</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Kat Sayısı:</div>
+                            <div class="info-value" id="detailFloorCount">2-4</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Teslim Tarihi:</div>
+                            <div class="info-value" id="detailDeliveryDate">Ağustos 2026</div>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <h3>Proje Hakkında</h3>
+                        <p id="projectDescription">Modern mimarisi, ferah ve kullanışlı daireleri ile şehrin merkezinde konforlu bir yaşam sunan Sinpaş Apartments, depreme dayanıklı yapısı ve kaliteli malzemeleri ile öne çıkıyor. Sosyal alanları, yeşil bahçeleri ve güvenlik sistemleri ile aileniz için ideal bir yaşam alanı sunuyor.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Smile Button -->
+        <div class="contact-smile-button" id="contactSmileButton">
+            <i class="fas fa-smile"></i>
+        </div>
+
+        <!-- Contact Popup -->
+        <div class="contact-popup" id="contactPopup">
+            <div class="popup-close">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="popup-content">
+                <h2>BİZE ULAŞIN</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Adınız Soyadınız</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon Numaranız</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-posta Adresiniz</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mesajınız</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Gönder</button>
+                </form>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Kamilocak mahallesi divrik caddesi 27 BC keçiören- ankara</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <span>0312 314 2000</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@ozinan.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>ÖZ İNAN</h2>
+                <p>1995'ten beri kaliteli yapılar</p>
+            </div>
+            <div class="footer-links">
+                <h3>Hızlı Erişim</h3>
+                <ul>
+                    <li><a href="#home">Ana Sayfa</a></li>
+                    <li><a href="#projects">Projelerimiz</a></li>
+                    <li><a href="#about">Hakkımızda</a></li>
+                    <li><a href="#contact">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>İletişim</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Kamilocak mahallesi divrik caddesi 27 BC keçiören- ankara</p>
+                <p><i class="fas fa-phone"></i> 0312 314 2000</p>
+                <p><i class="fas fa-envelope"></i> info@ozinan.com</p>
+            </div>
+            <div class="footer-social">
+                <h3>Sosyal Medya</h3>
+                <div class="social-icons">
+                    <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Öz İnan İnşaat. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
