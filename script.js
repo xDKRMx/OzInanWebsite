@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const projectsData = {
         'project1': {
             title: 'Sinpaş Boulevard Çankaya',
-            mainImage: 'assets/project1.jpg',
+            mainImage: 'assets/Image1.png',
             name: 'Sinpaş Boulevard Çankaya',
             location: 'Çankaya / Ankara',
             types: '2+1 / 3+1',
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         'project2': {
             title: 'Sinpaş Apartments Ümraniye',
-            mainImage: 'assets/project2.jpg',
+            mainImage: 'assets/Image2.png',
             name: 'Sinpaş Apartments Ümraniye',
             location: 'Ağaçlı Bozkurt / Ümraniye / İstanbul',
             types: '2+1 / 3+1',
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         'project3': {
             title: "Ankara'nın Merkezinde",
-            mainImage: 'assets/project3.jpg',
+            mainImage: 'assets/Image3.png',
             name: "Ankara'nın Merkezinde",
             location: 'Merkez / Ankara',
             types: '1+1 / 2+1 / 3+1',
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         'project4': {
             title: 'Tabiat Villaları',
-            mainImage: 'assets/project4.jpg',
+            mainImage: 'assets/Image4.png',
             name: 'Tabiat Villaları',
             location: 'Etimesgut / Ankara',
             types: '4+1 / 5+1',
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         'project5': {
             title: 'Premium Yaşam',
-            mainImage: 'assets/project5.jpg',
+            mainImage: 'assets/Image5.png',
             name: 'Premium Yaşam',
             location: 'Yenimahalle / Ankara',
             types: '2+1 / 3+1 / 4+1',
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         'project6': {
             title: 'Doğal Yaşam',
-            mainImage: 'assets/project6.jpg',
+            mainImage: 'assets/Image6.png',
             name: 'Doğal Yaşam',
             location: 'Keçiören / Ankara',
             types: '2+1 / 3+1',
@@ -230,12 +230,15 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!img) return null;
         
         const imgSrc = img.src || '';
-        if (imgSrc.includes('project1')) return 'project1';
-        if (imgSrc.includes('project2')) return 'project2';
-        if (imgSrc.includes('project3')) return 'project3';
-        if (imgSrc.includes('project4')) return 'project4';
-        if (imgSrc.includes('project5')) return 'project5';
-        if (imgSrc.includes('project6')) return 'project6';
+        // Check for both old and new image file names
+        if (imgSrc.includes('project1') || imgSrc.includes('Image1')) return 'project1';
+        if (imgSrc.includes('project2') || imgSrc.includes('Image2')) return 'project2';
+        if (imgSrc.includes('project3') || imgSrc.includes('Image3')) return 'project3';
+        if (imgSrc.includes('project4') || imgSrc.includes('Image4')) return 'project4';
+        if (imgSrc.includes('project5') || imgSrc.includes('Image5')) return 'project5';
+        if (imgSrc.includes('project6') || imgSrc.includes('Image6')) return 'project6';
+        
+        console.log('Project ID not found for image:', imgSrc);
         return null;
     }
 
