@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const popupClose = document.querySelector('.popup-close');
     const contactForm = document.getElementById('contactForm');
     const heroVideo = document.getElementById('hero-video');
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mainNav = document.getElementById('mainNav');
 
     // Project details elements
     const projectTitle = document.getElementById('projectTitle');
@@ -144,6 +146,24 @@ document.addEventListener('DOMContentLoaded', function() {
             filterPanel.classList.toggle('active');
         });
     }
+    
+    // Filter close button
+    const filterClose = document.querySelector('.filter-close');
+    if (filterClose && filterPanel) {
+        filterClose.addEventListener('click', function() {
+            filterPanel.classList.remove('active');
+        });
+    }
+    
+    // Close filter panel when clicking outside
+    document.addEventListener('mouseup', function(e) {
+        if (filterPanel && filterPanel.classList.contains('active')) {
+            // If the click is outside the filter panel and not on the filter toggle button
+            if (!filterPanel.contains(e.target) && !filterToggle.contains(e.target)) {
+                filterPanel.classList.remove('active');
+            }
+        }
+    });
 
     // Apply filter
     if (applyFilterBtn) {
@@ -259,6 +279,16 @@ document.addEventListener('DOMContentLoaded', function() {
             projectDetailsPanel.classList.remove('active');
         });
     }
+    
+    // Close project details panel when clicking outside
+    document.addEventListener('mouseup', function(e) {
+        if (projectDetailsPanel && projectDetailsPanel.classList.contains('active')) {
+            const panelContent = projectDetailsPanel.querySelector('.project-details-content');
+            if (panelContent && !panelContent.contains(e.target) && !e.target.closest('.project-card')) {
+                projectDetailsPanel.classList.remove('active');
+            }
+        }
+    });
 
     // Contact smile button
     if (contactSmileButton) {
@@ -277,41 +307,124 @@ document.addEventListener('DOMContentLoaded', function() {
     // Contact form submission
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+            e.preventDefault(); // Prevent the default form submission
             
-            // Get form data
+            // Get form data for success message
             const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
             
-            // Here you would normally send the data to a server
-            // For now, we'll just show an alert
-            alert(`Teşekkürler ${name}! Mesajınız gönderildi. En kısa sürede sizinle iletişime geçeceğiz.`);
+            // Show loading state
+            const submitBtn = this.querySelector('.submit-btn');
+            if (submitBtn) {
+                submitBtn.innerHTML = 'Gönderiliyor...';
+                submitBtn.disabled = true;
+            }
             
-            // Reset form
-            contactForm.reset();
-            
-            // Close popup
-            contactPopup.classList.remove('active');
+            // Use fetch to submit the form via AJAX
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Network response was not ok.');
+            })
+            .then(data => {
+                // Show success message
+                alert(`Teşekkürler ${name}! Mesajınız gönderildi. En kısa sürede sizinle iletişime geçeceğiz.`);
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Close popup
+                contactPopup.classList.remove('active');
+            })
+            .catch(error => {
+                console.error('Form submission error:', error);
+                alert('Mesaj gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
+            })
+            .finally(() => {
+                // Reset button state
+                if (submitBtn) {
+                    submitBtn.innerHTML = 'Gönder';
+                    submitBtn.disabled = false;
+                }
+            });
         });
     }
 
-    // Smooth scrolling for navigation links
+    // Mobile Menu Toggle
+    if (mobileMenuToggle && mainNav) {
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenuToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        });
+        
+        // Close mobile menu when clicking on a link
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                mainNav.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (mainNav.classList.contains('active') && 
+                !mainNav.contains(e.target) && 
+                !mobileMenuToggle.contains(e.target)) {
+                mobileMenuToggle.classList.remove('active');
+                mainNav.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+        });
+    }
+    
+    // Smooth scrolling for navigation links and handle contact popup
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             
             const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
             
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80, // Adjust for header height
-                    behavior: 'smooth'
-                });
+            // Check if this is a contact link
+            if (targetId === '#contact') {
+                // Open the contact popup instead of scrolling
+                if (contactPopup) {
+                    contactPopup.classList.add('active');
+                }
+            } else {
+                // Normal smooth scrolling for other links
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Adjust for header height
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
+    });
+    
+    // Close popup when clicking outside of it
+    document.addEventListener('mouseup', function(e) {
+        // Check if contact popup is active
+        if (contactPopup && contactPopup.classList.contains('active')) {
+            // Get the popup content
+            const popupContent = contactPopup.querySelector('.popup-content');
+            
+            // If the click is outside the popup content, close the popup
+            if (popupContent && !popupContent.contains(e.target) && !contactSmileButton.contains(e.target)) {
+                contactPopup.classList.remove('active');
+            }
+        }
     });
 
 

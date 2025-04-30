@@ -14,7 +14,12 @@
         <div class="logo">
             <h1>ÖZ İNAN</h1>
         </div>
-        <nav>
+        <div class="mobile-menu-toggle" id="mobileMenuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav id="mainNav">
             <ul>
                 <li><a href="#home">Ana Sayfa</a></li>
                 <li><a href="#projects">Projelerimiz</a></li>
@@ -26,15 +31,70 @@
 
     <!-- Main Content -->
     <main>
-        <!-- Hero Section with Video Background -->
+        <!-- Hero Section with YouTube Video Background -->
         <section id="home" class="hero">
             <div class="video-container">
-                <video autoplay muted loop playsinline preload="auto" id="hero-video">
-                    <source src="assets/out2.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <div id="youtube-background"></div>
                 <div class="overlay"></div>
             </div>
+            
+            <!-- YouTube API Script -->
+            <script>
+                // Load YouTube API asynchronously
+                var tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                var firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                
+                var player;
+                function onYouTubeIframeAPIReady() {
+                    player = new YT.Player('youtube-background', {
+                        videoId: 'y9CdRgwwhCs',
+                        playerVars: {
+                            'autoplay': 1,
+                            'controls': 0,
+                            'showinfo': 0,
+                            'modestbranding': 1,
+                            'loop': 1,
+                            'playlist': 'y9CdRgwwhCs',
+                            'mute': 1,
+                            'playsinline': 1,
+                            'rel': 0
+                        },
+                        events: {
+                            'onReady': onPlayerReady
+                        }
+                    });
+                }
+                
+                function onPlayerReady(event) {
+                    event.target.playVideo();
+                    // Make sure video is visible and sized correctly
+                    resizeVideo();
+                    // Add resize listener
+                    window.addEventListener('resize', resizeVideo);
+                }
+                
+                function resizeVideo() {
+                    var player = document.getElementById('youtube-background');
+                    if (player) {
+                        var videoRatio = 16/9;
+                        var containerWidth = player.parentElement.offsetWidth;
+                        var containerHeight = player.parentElement.offsetHeight;
+                        var containerRatio = containerWidth/containerHeight;
+                        
+                        if (containerRatio > videoRatio) {
+                            // Container is wider than video aspect ratio
+                            player.style.width = '100%';
+                            player.style.height = containerWidth / videoRatio + 'px';
+                        } else {
+                            // Container is taller than video aspect ratio
+                            player.style.width = containerHeight * videoRatio + 'px';
+                            player.style.height = '100%';
+                        }
+                    }
+                }
+            </script>
             <div class="hero-content">
                 <h1>ANKARA'NIN MERKEZİNDE<br>BAMBAŞKA BİR HAYAT</h1>
                 <p>1995'ten bu yana kaliteli ve güvenilir yapılar</p>
@@ -55,6 +115,10 @@
             
             <!-- Filter Panel -->
             <div class="filter-panel" id="filterPanel">
+                <div class="filter-close">
+                    <i class="fas fa-times"></i>
+                    <span class="sr-only">Kapat</span>
+                </div>
                 <h3>Projeleri Filtrele</h3>
                 <div class="filter-options">
                     <div class="filter-group">
@@ -219,6 +283,7 @@
         <div class="project-details-panel" id="projectDetailsPanel">
             <div class="panel-close">
                 <i class="fas fa-times"></i>
+                <span class="sr-only">Kapat</span>
             </div>
             <div class="project-details-content">
                 <div class="project-details-header">
@@ -278,12 +343,18 @@
 
         <!-- Contact Popup -->
         <div class="contact-popup" id="contactPopup">
-            <div class="popup-close">
-                <i class="fas fa-times"></i>
-            </div>
             <div class="popup-content">
+                <div class="popup-close">
+                    <i class="fas fa-times"></i>
+                    <span class="sr-only">Kapat</span>
+                </div>
                 <h2>BİZE ULAŞIN</h2>
-                <form id="contactForm">
+                <form id="contactForm" action="https://formsubmit.co/ajax/kara_stmm2002@hotmail.com" method="POST">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="Öz İnan İnşaat - Yeni İletişim Mesajı">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    
                     <div class="form-group">
                         <label for="name">Adınız Soyadınız</label>
                         <input type="text" id="name" name="name" required>
@@ -305,15 +376,21 @@
                 <div class="contact-info">
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Kamilocak mahallesi divrik caddesi 27 BC keçiören- ankara</span>
+                        <a href="https://maps.google.com/?q=Kamilocak+mahallesi+divrik+caddesi+27+BC+ke%C3%A7i%C3%B6ren+ankara" target="_blank" class="contact-link">
+                            Kamilocak mahallesi divrik caddesi 27 BC keçiören- ankara
+                        </a>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
-                        <span>0312 314 2000</span>
+                        <a href="tel:03123142000" class="contact-link phone-link">
+                            0312 314 2000
+                        </a>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
-                        <span>info@ozinan.com</span>
+                        <a href="mailto:info@ozinan.com" class="contact-link">
+                            info@ozinan.com
+                        </a>
                     </div>
                 </div>
             </div>
@@ -338,9 +415,24 @@
             </div>
             <div class="footer-contact">
                 <h3>İletişim</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Kamilocak mahallesi divrik caddesi 27 BC keçiören- ankara</p>
-                <p><i class="fas fa-phone"></i> 0312 314 2000</p>
-                <p><i class="fas fa-envelope"></i> info@ozinan.com</p>
+                <p>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <a href="https://maps.google.com/?q=Kamilocak+mahallesi+divrik+caddesi+27+BC+ke%C3%A7i%C3%B6ren+ankara" target="_blank" class="footer-contact-link">
+                        Kamilocak mahallesi divrik caddesi 27 BC keçiören- ankara
+                    </a>
+                </p>
+                <p>
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:03123142000" class="footer-contact-link phone-link">
+                        0312 314 2000
+                    </a>
+                </p>
+                <p>
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:info@ozinan.com" class="footer-contact-link">
+                        info@ozinan.com
+                    </a>
+                </p>
             </div>
             <div class="footer-social">
                 <h3>Sosyal Medya</h3>
