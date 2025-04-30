@@ -1,0 +1,66 @@
+{
+    "navigation": {
+        "home": "Home",
+        "projects": "Projects",
+        "about": "About",
+        "contact": "Contact"
+    },
+    "hero": {
+        "title": "Öz İnan Construction",
+        "subtitle": "Quality Constructions Since 1995",
+        "motto": "Building Your Dreams",
+        "description": "We are a construction company that has been providing quality service in the construction sector since 1995. We continue to build modern and sustainable structures with our experienced team and innovative approach."
+    },
+    "projects": {
+        "title": "Our Projects",
+        "subtitle": "Discover Our Projects",
+        "filters": {
+            "title": "Filter Projects",
+            "location": "Location",
+            "type": "Project Type",
+            "status": "Delivery Status",
+            "apply": "Apply Filters",
+            "reset": "Reset Filters",
+            "locations": {
+                "kecioren": "Kecioren",
+                "cankaya": "Cankaya",
+                "etimesgut": "Etimesgut",
+                "yenimahalle": "Yenimahalle"
+            },
+            "types": {
+                "konut": "Residential",
+                "ticari": "Commercial",
+                "karma": "Mixed"
+            },
+            "statuses": {
+                "tamamlandi": "Completed",
+                "insaatdevam": "Under Construction",
+                "planlama": "In Planning"
+            }
+        }
+    },
+    "about": {
+        "title": "About Us",
+        "subtitle": "Our Story",
+        "description": "Öz İnan Construction, established in 1995, has been providing quality service in the construction sector for many years. We continue to build modern and sustainable structures with our experienced team and innovative approach. Our goal is to provide the best service to our customers and to be a pioneer in the sector with our quality constructions.",
+        "values": {
+            "title": "Our Values",
+            "quality": "Quality",
+            "reliability": "Reliability",
+            "innovation": "Innovation",
+            "sustainability": "Sustainability"
+        }
+    },
+    "contact": {
+        "title": "Contact Us",
+        "subtitle": "Get in Touch",
+        "form": {
+            "name": "Name",
+            "phone": "Phone",
+            "email": "Email",
+            "message": "Message",
+            "send": "Send Message"
+        },
+        "success": "Thank you! Your message has been sent. We will contact you as soon as possible."
+    }
+} 

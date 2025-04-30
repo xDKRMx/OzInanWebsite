@@ -21,12 +21,26 @@
         </div>
         <nav id="mainNav">
             <ul>
-                <li><a href="#home">Ana Sayfa</a></li>
-                <li><a href="#projects">Projelerimiz</a></li>
-                <li><a href="#about">Hakkımızda</a></li>
-                <li><a href="#contact">İletişim</a></li>
+                <li><a href="#home" data-i18n="navigation.home">Ana Sayfa</a></li>
+                <li><a href="#projects" data-i18n="navigation.projects">Projelerimiz</a></li>
+                <li><a href="#about" data-i18n="navigation.about">Hakkımızda</a></li>
+                <li><a href="#contact" data-i18n="navigation.contact">İletişim</a></li>
             </ul>
         </nav>
+        <div class="language-selector" style="z-index: 1000;">
+            <button class="lang-btn" data-lang="tr">
+                <span class="flag-icon">🇹🇷</span>
+                TR
+            </button>
+            <button class="lang-btn" data-lang="en">
+                <span class="flag-icon">🇬🇧</span>
+                EN
+            </button>
+            <button class="lang-btn" data-lang="ru">
+                <span class="flag-icon">🇷🇺</span>
+                RU
+            </button>
+        </div>
     </header>
 
     <!-- Main Content -->
@@ -96,20 +110,20 @@
                 }
             </script>
             <div class="hero-content">
-                <h1>ANKARA'NIN MERKEZİNDE<br>BAMBAŞKA BİR HAYAT</h1>
-                <p>1995'ten bu yana kaliteli ve güvenilir yapılar</p>
+                <h1 data-i18n="hero.title">ANKARA'NIN MERKEZİNDE<br>BAMBAŞKA BİR HAYAT</h1>
+                <p data-i18n="hero.subtitle">1995'ten bu yana kaliteli ve güvenilir yapılar</p>
                 <div class="motto-container">
-                    <h3>ÖZ İNAN İNŞAAT MOTTOSU</h3>
-                    <p class="motto">"Keçiören'e ve Ankara'ya daha fazla değer katmak için, depreme dayanıklı kentsel dönüşümle insanlara ferah, güvenilir, kullanışlı ve modern yapılar inşa ediyoruz."</p>
+                    <h3 data-i18n="hero.motto">ÖZ İNAN İNŞAAT MOTTOSU</h3>
+                    <p class="motto" data-i18n="hero.description">"Keçiören'e ve Ankara'ya daha fazla değer katmak için, depreme dayanıklı kentsel dönüşümle insanlara ferah, güvenilir, kullanışlı ve modern yapılar inşa ediyoruz."</p>
                 </div>
             </div>
         </section>
 
         <!-- Projects Section -->
         <section id="projects" class="projects">
-            <h2>PROJELERİMİZ</h2>
+            <h2 data-i18n="projects.title">PROJELERİMİZ</h2>
             <div class="filter-button" id="filterToggle">
-                <span>FİLTRELE</span>
+                <span data-i18n="projects.filters.title">FİLTRELE</span>
                 <i class="fas fa-plus"></i>
             </div>
             
@@ -122,11 +136,11 @@
                 <h3>Projeleri Filtrele</h3>
                 <div class="filter-options">
                     <div class="filter-group">
-                        <h4>Konum</h4>
-                        <label><input type="checkbox" value="kecioren"> Keçiören</label>
-                        <label><input type="checkbox" value="cankaya"> Çankaya</label>
-                        <label><input type="checkbox" value="etimesgut"> Etimesgut</label>
-                        <label><input type="checkbox" value="yenimahalle"> Yenimahalle</label>
+                        <h4 data-i18n="projects.filters.location">Konum</h4>
+                        <label><input type="checkbox" value="kecioren" data-i18n="projects.filters.locations.kecioren"> Keçiören</label>
+                        <label><input type="checkbox" value="cankaya" data-i18n="projects.filters.locations.cankaya"> Çankaya</label>
+                        <label><input type="checkbox" value="etimesgut" data-i18n="projects.filters.locations.etimesgut"> Etimesgut</label>
+                        <label><input type="checkbox" value="yenimahalle" data-i18n="projects.filters.locations.yenimahalle"> Yenimahalle</label>
                     </div>
                     <div class="filter-group">
                         <h4>Proje Tipi</h4>

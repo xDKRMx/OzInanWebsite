@@ -427,5 +427,118 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Dil değiştirme işlemleri
+    console.log('DOM loaded, initializing language system...');
 
+    // Temel değişkenler
+    let currentLang = localStorage.getItem('preferredLanguage') || 'tr';
+    const translations = {
+        tr: {
+            navigation: {
+                home: "Ana Sayfa",
+                projects: "Projelerimiz",
+                about: "Hakkımızda",
+                contact: "İletişim"
+            },
+            hero: {
+                title: "ANKARA'NIN MERKEZİNDE BAMBAŞKA BİR HAYAT",
+                subtitle: "1995'ten bu yana kaliteli ve güvenilir yapılar",
+                motto: "ÖZ İNAN İNŞAAT MOTTOSU",
+                description: "Keçiören'e ve Ankara'ya daha fazla değer katmak için, depreme dayanıklı kentsel dönüşümle insanlara ferah, güvenilir, kullanışlı ve modern yapılar inşa ediyoruz."
+            }
+        },
+        en: {
+            navigation: {
+                home: "Home",
+                projects: "Projects",
+                about: "About",
+                contact: "Contact"
+            },
+            hero: {
+                title: "A DIFFERENT LIFE IN THE CENTER OF ANKARA",
+                subtitle: "Quality and reliable buildings since 1995",
+                motto: "ÖZ İNAN CONSTRUCTION MOTTO",
+                description: "We build spacious, reliable, functional and modern buildings with earthquake-resistant urban transformation to add more value to Keçiören and Ankara."
+            }
+        },
+        ru: {
+            navigation: {
+                home: "Главная",
+                projects: "Проекты",
+                about: "О нас",
+                contact: "Контакты"
+            },
+            hero: {
+                title: "ДРУГАЯ ЖИЗНЬ В ЦЕНТРЕ АНКАРЫ",
+                subtitle: "Качественные и надежные здания с 1995 года",
+                motto: "ДЕВИЗ ÖZ İNAN CONSTRUCTION",
+                description: "Мы строим просторные, надежные, функциональные и современные здания с сейсмостойкой городской трансформацией, чтобы добавить больше ценности Кечиорену и Анкаре."
+            }
+        }
+    };
+
+    // Dil butonlarını seç
+    const langButtons = document.querySelectorAll('.lang-btn');
+    console.log('Found language buttons:', langButtons.length);
+
+    // Metinleri güncelle
+    function updateContent(lang) {
+        console.log('Updating content to:', lang);
+        const elements = document.querySelectorAll('[data-i18n]');
+        console.log('Found elements to translate:', elements.length);
+
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            const keys = key.split('.');
+            let value = translations[lang];
+
+            try {
+                for (const k of keys) {
+                    value = value[k];
+                }
+
+                if (value) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = value;
+                    } else {
+                        element.textContent = value;
+                    }
+                    console.log('Updated:', key, 'to:', value);
+                }
+            } catch (error) {
+                console.error('Error updating:', key, error);
+            }
+        });
+    }
+
+    // Başlangıç dilini ayarla
+    updateContent(currentLang);
+    document.querySelector(`.lang-btn[data-lang="${currentLang}"]`)?.classList.add('active');
+
+    // Her butona tıklama olayı ekle
+    langButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const newLang = this.getAttribute('data-lang');
+            console.log('Language button clicked:', newLang);
+
+            if (newLang !== currentLang) {
+                // Aktif sınıfını güncelle
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                // Dili güncelle
+                currentLang = newLang;
+                localStorage.setItem('preferredLanguage', newLang);
+
+                // Animasyon efekti
+                document.body.style.opacity = '0.5';
+                setTimeout(() => {
+                    updateContent(newLang);
+                    document.body.style.opacity = '1';
+                }, 200);
+            }
+        });
+        console.log('Added click listener to:', button.getAttribute('data-lang'));
+    });
 });
