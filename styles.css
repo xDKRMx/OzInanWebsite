@@ -116,7 +116,10 @@ nav ul li a:hover {
     margin-top: 60px;
     border-bottom: 5px solid var(--primary-color);
 }
-
+#hero-video
+{
+z-index: 2;
+}
 .video-container {
     position: absolute;
     top: 0;
@@ -124,19 +127,21 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background-color: #333;
+    background-color: #d6d0d0;
+    z-index: 1;
 }
 
 .video-container video {
     min-width: 100%;
     min-height: 100%;
     width: auto;
-    height: auto;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 /* Video placeholder for 1920x1080 ratio */
@@ -834,6 +839,7 @@ footer {
     color: var(--secondary-color);
     padding: 60px 20px 20px;
     border-top: 1px solid #130f0f;
+    background-color: rgb(35, 34, 46);
 }
 
 .footer-content {
@@ -842,6 +848,7 @@ footer {
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
+    
     gap: 30px;
 }
 

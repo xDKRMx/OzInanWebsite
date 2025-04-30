@@ -101,30 +101,41 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Set up placeholder for missing video
+    // Handle video error (if video doesn't load)
     if (heroVideo) {
-        heroVideo.addEventListener('error', function() {
+        // Log when video starts loading
+        console.log('Attempting to load video: assets/OzinanFilm.mp4');
+        
+        // Log when video is loaded
+        heroVideo.addEventListener('loadeddata', function() {
+            console.log('Video loaded successfully!');
+        });
+        
+        // Handle video loading error
+        heroVideo.addEventListener('error', function(e) {
+            console.error('Video failed to load:', e);
             const videoContainer = document.querySelector('.video-container');
             if (videoContainer) {
                 videoContainer.innerHTML = '<div class="video-placeholder"></div>';
-                const placeholder = document.querySelector('.video-placeholder');
-                if (placeholder) {
-                    placeholder.style.backgroundImage = 'url("assets/hero-bg.jpg")';
-                    placeholder.style.width = '100%';
-                    placeholder.style.height = '100%';
-                    placeholder.style.backgroundSize = 'cover';
-                    placeholder.style.backgroundPosition = 'center';
-                }
+                videoContainer.style.backgroundColor = '#d6d0d0';
             }
         });
         
-        // Fallback if video doesn't load
+        // Fallback if video doesn't load after timeout
         setTimeout(function() {
             if (heroVideo.readyState === 0) {
+                console.warn('Video loading timeout - forcing fallback');
                 const event = new Event('error');
                 heroVideo.dispatchEvent(event);
             }
-        }, 2000);
+        }, 5000);
+        
+        // Try to manually load the video
+        try {
+            heroVideo.load();
+        } catch (err) {
+            console.error('Error manually loading video:', err);
+        }
     }
 
     // Filter toggle
