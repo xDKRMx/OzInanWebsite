@@ -1316,9 +1316,16 @@ footer {
 }
 
 .flag-icon {
-    font-size: 16px;
-    line-height: 1;
     display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.flag-icon img {
+    width: 24px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 2px;
     vertical-align: middle;
 }
 
