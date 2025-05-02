@@ -1338,3 +1338,92 @@ footer {
 [data-i18n] {
     animation: fadeIn 0.3s ease;
 }
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: #333;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1001;
+}
+
+.lang-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
+}
+
+.lang-btn.active {
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.flag-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.flag-icon img {
+    width: 24px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 2px;
+    vertical-align: middle;
+}
+
+/* Dil değiştirme animasyonu */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+[data-i18n] {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Mobile Language Selector Styles */
+@media (max-width: 768px) {
+    .language-selector {
+        position: fixed;
+        bottom: 80px; /* Above contact button */
+        right: 20px;
+        z-index: 1001; /* Higher than contact button */
+    }
+    
+    .language-selector .lang-btn {
+        margin: 5px 0;
+        padding: 8px 12px;
+        display: none; /* Hidden by default */
+    }
+    
+    .language-selector.active .lang-btn {
+        display: flex; /* Show when active */
+    }
+    
+    .language-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+    }
+    
+    .language-toggle i {
+        font-size: 20px;
+    }
+}

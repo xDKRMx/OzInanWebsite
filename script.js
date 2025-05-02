@@ -541,4 +541,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         console.log('Added click listener to:', button.getAttribute('data-lang'));
     });
+
+    // Language selector toggle for mobile
+    const languageToggle = document.getElementById('languageToggle');
+    const languageSelector = document.querySelector('.language-selector');
+    
+    if (languageToggle && languageSelector) {
+        languageToggle.addEventListener('click', function() {
+            languageSelector.classList.toggle('active');
+        });
+        
+        // Close language selector when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!languageSelector.contains(e.target) && e.target !== languageToggle) {
+                languageSelector.classList.remove('active');
+            }
+        });
+    }
 });

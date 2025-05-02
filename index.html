@@ -28,6 +28,9 @@
             </ul>
         </nav>
         <div class="language-selector" style="z-index: 1000;">
+            <div class="language-toggle" id="languageToggle">
+                <i class="fas fa-globe"></i>
+            </div>
             <button class="lang-btn" data-lang="tr">
                 <span class="flag-icon"><img src="assets/flags/tr.png" alt="TR"></span>
                 TR
@@ -90,7 +93,7 @@
                 }
                 
                 function resizeVideo() {
-                    var player = document.getElementById('youtube-background');
+                    var player = document.getElementById('o-background');
                     if (player) {
                         var videoRatio = 16/9;
                         var containerWidth = player.parentElement.offsetWidth;
